@@ -1,1 +1,0 @@
-cppcalc.exe /K
