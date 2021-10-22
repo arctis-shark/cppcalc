@@ -1,22 +1,29 @@
 #include <iostream>
 #include <math.h>
+#include <Windows.h>
 
-using namespace std;
+/*cppcalc v1.0 - Made by karak21*/
+
+using std::cout;
+using std::cin;
+
+void clearcp() { /*Clears the console*/
+	cout << "\x1B[2J\x1B[H";
+}
 
 int main()
 {
-
 	double num1, num2, numspc, result; /*num1 and num2 are used for simple and advanced operations whereas numspc is used for advanced operations that only require one number.*/
 	char answer, oprt; /*the answer variable is to tell cppcalc if the user wants to do a simple or advanced operation*/
+	start:
+		cout << "cppcalc v1.0 x86 - Made by karak21\n\n";
+		cout << "Welcome to cppcalc. If you want to do advanced math functions, enter y. To do simple math functions, enter n.\n\n>> ";
+		cin >> answer;
 
-	cout << "cppcalc v1.0 x86 - Made by karak21\n\n";
-	cout << "Welcome to cppcalc. If you want to do advanced math functions, enter y. To do simple math functions, enter n.\n\n>> ";
-	cin >> answer;
-
-	if (answer == 'y') {
+		if (answer == 'y') {
 		cout << "You selected: Advanced operations.\n";
 		cout << "Select the operation that you want to do:\n\n 1. Square Root\n 2. Round\n 3. Exponent\n 4. Square\n 5. Cube\n 6. Tangent\n 7. Logmarithm\n 8. Power\n 9. Sine\n 10. Cosine\n 11. Truncation\n\n>> ";
-		int aopselected; /*aopselected means "advanced operation selected". it accepts values from 1 to 6.*/
+		int aopselected; 
 		cin >> aopselected;
 		
 		if (aopselected == 1) {
@@ -25,11 +32,11 @@ int main()
 			result = sqrt(numspc);
 		}
 		else if (aopselected == 2) {
-			int rtsel; /*rtsel means round type selected*/
+			int rtsel;
 			cout << "You selected: Round. Please select what type of rounding you would like to do:\n\n";
-			cout << " 1. Round up\n 2. Round down\n 3. Round normally\n>>";
+			cout << " 1. Round up\n 2. Round down\n 3. Round normally\n>> ";
 			cin >> rtsel;
-			cout << "Please enter a number:\n>>";
+			cout << "Please enter a number:\n>> ";
 			cin >> numspc;
 			if (rtsel == 1) {
 				result = ceil(numspc);
@@ -93,7 +100,7 @@ int main()
 			result = 0;
 		}
 	}
-	else if (answer == 'n') {
+		else if (answer == 'n') {
 		cout << "You selected: Simple operations. Please enter your first number:\n>> ";
 		cin >> num1;
 		cout << "Now, enter your second number:\n>> ";
@@ -120,14 +127,33 @@ int main()
 		}
 
 	}
-	else {
-		cout << "This is not a valid answer.\n";
-		result = 0;
-	}
+		else {
+			cout << "This is not a valid answer.\n";
+			Sleep(2000);
+			clearcp();
+			goto start;
+		}
 
 
 	/*Display the result*/
-
 	cout << "Your result is: " << result << "\n";
-	return 0;
+
+	/*Confirm exit*/
+	confirmexit:
+		char ecanswer;
+		cout << "Do you want to continue using cppcalc or do you want to exit? Enter y to continue or n to exit.\n\n>>";
+		cin >> ecanswer;
+
+		if (ecanswer == 'y') {
+			goto start;
+		}
+		else if(ecanswer == 'n') {
+			return EXIT_SUCCESS;
+		}
+		else {
+			cout << "Sorry, but this is not a valid answer. ";
+			Sleep(2000);
+			clearcp();
+			goto confirmexit;
+		}
 }
