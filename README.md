@@ -1,9 +1,9 @@
 # cppcalc
 Basic C++ calculator with some trigonometry functions.
 
-#Functions
+# Functions
 
-##Advanced Operations
+## Advanced Operations
 
 1. Square Root
 2. Round (round up, round down, round normally)
@@ -17,7 +17,7 @@ Basic C++ calculator with some trigonometry functions.
 10. Cosine
 11. Truncation
 
-##Simple operations
+## Simple operations
 
 1. Addition
 2. Substraction
